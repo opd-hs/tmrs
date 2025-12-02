@@ -186,7 +186,7 @@ export default function ViewReportsPage() {
       <MobileMenu />
       <Sidebar />
 
-      <div className="flex-1 p-4 md:p-8">
+      <div className="flex-1 p-4 md:p-8 max-w-5xl">
         <div className="pl-12 md:pl-1">
           <h1 className="text-2xl md:text-3xl font-bold mb-6 bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
             View Temperature Reports
@@ -268,7 +268,15 @@ export default function ViewReportsPage() {
               if (!timeReports || timeReports.length === 0) return null;
 
               return (
-                <div key={time} className="bg-white rounded-xl shadow-lg p-6">
+                <div
+                  key={time}
+                  className={`bg-white rounded-xl p-4 pb-1 ${timeReports.some(report =>
+                    (report.entries?.filter((e) => !e.temperature_in_range).length || 0) > 0
+                  )
+                    ? 'border border-slate-200 shadow-[0_0_10px_2px_#fca5a5]'
+                    : 'shadow-lg'
+                    }`}
+                >
                   <h2 className="text-lg font-semibold text-slate-800 mb-4 pb-2 border-b-2 border-slate-200">
                     {getTimeLabel(time)}
                   </h2>

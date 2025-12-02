@@ -177,7 +177,7 @@ export default function PICContactsPage() {
       <MobileMenu />
       <Sidebar />
 
-      <div className="flex-1 p-4 md:p-8">
+      <div className="flex-1 p-4 md:p-8 max-w-5xl">
         <div className="flex flex-col gap-4 mb-6">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <h1 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">

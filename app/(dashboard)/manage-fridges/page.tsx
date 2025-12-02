@@ -150,11 +150,11 @@ export default function ManageFridgesPage() {
   };
 
   return (
-    <div className="flex min-h-screen bg-slate-50">
+    <div className="flex min-h-screen bg-slate-50 ">
       <MobileMenu />
       <Sidebar />
 
-      <div className="flex-1 p-4 md:p-8">
+      <div className="flex-1 p-4 md:p-8 max-w-4xl">
         <div className="flex flex-col gap-4 mb-6">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div className="pl-12 md:pl-1">

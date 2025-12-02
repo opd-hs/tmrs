@@ -75,7 +75,7 @@ export default function ReportItem({ report, isExpanded, onToggleExpand, onDelet
                         <div className="flex-1">
                             <div className="flex items-center gap-3 mb-2">
                                 <span className="text-sm font-semibold text-slate-700">
-                                    Submitted by: {report.submitter_name || 'Unknown'}
+                                    Oleh: {report.submitter_name || 'Unknown'}
                                 </span>
                                 <span className="text-xs text-slate-500">
                                     {format(new Date(report.created_at), 'MMM d, yyyy HH:mm')}

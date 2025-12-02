@@ -17,6 +17,7 @@ docs
 .env*.local
 backend/.env
 frontend/.env.local
+.next
 
 # Logs
 *.log

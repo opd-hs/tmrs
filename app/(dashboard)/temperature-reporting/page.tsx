@@ -147,7 +147,7 @@ export default function TemperatureReportingPage() {
       <MobileMenu />
       <Sidebar />
 
-      <div className="flex-1 p-4 md:p-8">
+      <div className="flex-1 p-4 md:p-8 max-w-5xl">
         <div className="pl-12 md:pl-1">
           <h1 className="text-2xl md:text-3xl font-bold mb-6 bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
             Temperature Reporting
