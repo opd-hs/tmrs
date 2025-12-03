@@ -269,13 +269,13 @@ export default function TemperatureReportingPage() {
               {/* Remarks */}
               <div>
                 <label className="block text-sm font-semibold text-slate-700 mb-2">
-                  Remarks (Optional)
+                  Catatan (Sekiranya ada)
                 </label>
                 <textarea
                   value={formData.remarks}
                   onChange={(e) => setFormData({ ...formData, remarks: e.target.value })}
                   rows={4}
-                  placeholder="Enter any additional findings or issues..."
+                  placeholder="Mohon nyatakan nama sensor dan suhu semasa sekiranya terdapat insiden di luar suhu julat, dan tindakan yang diambil"
                   className="w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
                 />
               </div>

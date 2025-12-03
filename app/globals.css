@@ -45,3 +45,20 @@ body {
 .shadow-lg {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
+
+/* Custom glow pulse animation - only animates shadow, not content */
+@keyframes glow-pulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 2px 1px #fca5a5;
+  }
+
+  50% {
+    box-shadow: 0 0 10px 2px #fca5a5;
+  }
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}

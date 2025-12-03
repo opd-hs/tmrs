@@ -34,7 +34,6 @@ export default function MobileMenu() {
     { href: '/temperature-reporting', label: 'Temperature Reporting', icon: Thermometer },
     { href: '/pic-contacts', label: 'PIC Contact Number', icon: Phone },
     { href: '/view-reports', label: 'View Report', icon: FileText },
-    { href: '/manage-fridges', label: 'Manage Fridge', icon: Refrigerator },
   ];
 
   return (
@@ -79,7 +78,20 @@ export default function MobileMenu() {
                 </ul>
               </div>
 
-              <ul className="space-y-2 mt-6 pt-6 border-slate-700/50">
+              <ul className="space-y-2 mt-6 pt-6 border-t border-slate-700/50">
+                <li>
+                  <Link
+                    href="/manage-fridges"
+                    onClick={() => setIsOpen(false)}
+                    className={`flex items-center w-full px-4 py-3 rounded-lg transition-all duration-200 ${pathname === '/manage-fridges'
+                        ? 'bg-gradient-to-r from-emerald-600 to-emerald-500 text-white shadow-lg shadow-emerald-500/30'
+                        : 'text-slate-300 hover:bg-slate-800 hover:text-white hover:shadow-md'
+                      }`}
+                  >
+                    <Refrigerator className="w-5 h-5 mr-3" />
+                    <span className="font-medium">Manage Fridge</span>
+                  </Link>
+                </li>
                 <li>
                   <button
                     onClick={handleLogout}

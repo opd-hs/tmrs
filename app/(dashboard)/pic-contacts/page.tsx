@@ -173,11 +173,11 @@ export default function PICContactsPage() {
   };
 
   return (
-    <div className="flex min-h-screen bg-slate-50">
+    <div className="flex min-h-screen bg-slate-50 overflow-x-hidden">
       <MobileMenu />
       <Sidebar />
 
-      <div className="flex-1 p-4 md:p-8 max-w-5xl">
+      <div className="flex-1 p-4 md:p-8 max-w-5xl overflow-x-hidden">
         <div className="flex flex-col gap-4 mb-6">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <h1 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
@@ -186,40 +186,11 @@ export default function PICContactsPage() {
             {editingMode && (
               <button
                 onClick={handleAddSection}
-                className="px-4 py-2 bg-gradient-to-r from-indigo-600 to-indigo-700 text-white rounded-lg hover:from-indigo-700 hover:to-indigo-800 font-semibold shadow-md hover:shadow-lg transition-all"
+                className="w-full sm:w-auto px-4 py-2 bg-gradient-to-r from-indigo-600 to-indigo-700 text-white rounded-lg hover:from-indigo-700 hover:to-indigo-800 font-semibold shadow-md hover:shadow-lg transition-all"
               >
                 + Add Section
               </button>
             )}
-          </div>
-
-          {/* Editing Mode Toggle */}
-          <div className="flex items-center gap-3 bg-white rounded-lg shadow-md p-4">
-            <span className="text-sm font-semibold text-slate-700">Editing Mode:</span>
-            <button
-              onClick={() => {
-                setEditingMode(!editingMode);
-                // Cancel any ongoing edits when toggling off
-                if (editingMode) {
-                  setEditingContact(null);
-                  setAddingToSection(null);
-                  setContactForm({ name: '', phoneNumber: '' });
-                }
-              }}
-              className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 ${editingMode ? 'bg-indigo-600' : 'bg-slate-300'
-                }`}
-            >
-              <span
-                className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${editingMode ? 'translate-x-6' : 'translate-x-1'
-                  }`}
-              />
-            </button>
-            <span className={`text-sm font-medium ${editingMode ? 'text-indigo-600' : 'text-slate-500'}`}>
-              {editingMode ? 'ON' : 'OFF'}
-            </span>
-            <span className="text-xs text-slate-500 ml-2">
-              ({editingMode ? 'Show' : 'Hide'} editing controls)
-            </span>
           </div>
         </div>
 
@@ -258,23 +229,23 @@ export default function PICContactsPage() {
               .filter((section) => section.pic_contacts && section.pic_contacts.length > 0)
               .map((section) => (
                 <div key={section.id} className="bg-white rounded-xl shadow-lg p-6">
-                  <div className="flex items-center justify-between mb-4 pb-3 border-b-2 border-slate-200">
+                  <div className="flex flex-wrap items-center justify-between gap-3 mb-4 pb-3 border-b-2 border-slate-200">
                     <div className="flex items-center gap-2">
-                      <h2 className="text-xl font-semibold text-slate-800">
+                      <h2 className="text-lg md:text-xl font-semibold text-slate-800">
                         {section.name}
                       </h2>
                     </div>
                     {editingMode && (
-                      <div className="flex gap-2">
+                      <div className="flex flex-wrap gap-2">
                         <button
                           onClick={() => handleUpdateSectionName(section.id, section.name)}
-                          className="px-3 py-1.5 text-sm bg-slate-200 text-slate-700 rounded-lg hover:bg-slate-300 transition-colors"
+                          className="px-3 py-1.5 text-xs sm:text-sm bg-slate-200 text-slate-700 rounded-lg hover:bg-slate-300 transition-colors whitespace-nowrap"
                         >
                           Edit Section Name
                         </button>
                         <button
                           onClick={() => startAddContact(section.id)}
-                          className="px-3 py-1.5 text-sm bg-gradient-to-r from-indigo-600 to-indigo-700 text-white rounded-lg hover:from-indigo-700 hover:to-indigo-800 transition-all"
+                          className="px-3 py-1.5 text-xs sm:text-sm bg-gradient-to-r from-indigo-600 to-indigo-700 text-white rounded-lg hover:from-indigo-700 hover:to-indigo-800 transition-all whitespace-nowrap"
                         >
                           + Add Contact
                         </button>
@@ -304,16 +275,16 @@ export default function PICContactsPage() {
                               className="px-4 py-2 border-2 border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                             />
                           </div>
-                          <div className="flex gap-2">
+                          <div className="flex flex-col sm:flex-row gap-2">
                             <button
                               onClick={() => handleAddContact(section.id)}
-                              className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 text-sm font-medium"
+                              className="w-full sm:w-auto px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 text-sm font-medium"
                             >
                               Add
                             </button>
                             <button
                               onClick={cancelEdit}
-                              className="px-4 py-2 bg-slate-200 text-slate-700 rounded-lg hover:bg-slate-300 text-sm font-medium"
+                              className="w-full sm:w-auto px-4 py-2 bg-slate-200 text-slate-700 rounded-lg hover:bg-slate-300 text-sm font-medium"
                             >
                               Cancel
                             </button>
@@ -345,32 +316,32 @@ export default function PICContactsPage() {
                                       className="px-4 py-2 border-2 border-slate-200 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
                                     />
                                   </div>
-                                  <div className="flex gap-2">
+                                  <div className="flex flex-col sm:flex-row gap-2">
                                     <button
                                       onClick={handleUpdateContact}
-                                      className="px-4 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700 text-sm font-medium"
+                                      className="w-full sm:w-auto px-4 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700 text-sm font-medium"
                                     >
                                       Update
                                     </button>
                                     <button
                                       onClick={cancelEdit}
-                                      className="px-4 py-2 bg-slate-200 text-slate-700 rounded-lg hover:bg-slate-300 text-sm font-medium"
+                                      className="w-full sm:w-auto px-4 py-2 bg-slate-200 text-slate-700 rounded-lg hover:bg-slate-300 text-sm font-medium"
                                     >
                                       Cancel
                                     </button>
                                   </div>
                                 </div>
                               ) : (
-                                <div className="flex items-center justify-between p-4 bg-slate-50 rounded-lg hover:bg-slate-100 transition-colors">
-                                  <div className="flex-1">
+                                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-4 bg-slate-50 rounded-lg hover:bg-slate-100 transition-colors gap-3">
+                                  <div className="flex-1 min-w-0">
                                     <p className="font-semibold text-slate-800">{contact.name}</p>
-                                    <div className="flex items-center gap-3 mt-2">
-                                      <p className="text-slate-600">
+                                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mt-2">
+                                      <p className="text-slate-600 text-sm break-all">
                                         <a href={`tel:${contact.phone_number}`} className="hover:text-indigo-600 transition-colors">
                                           {contact.phone_number}
                                         </a>
                                       </p>
-                                      <div className="flex items-center gap-2">
+                                      <div className="flex items-center gap-2 flex-wrap">
                                         <a
                                           href={`tel:${contact.phone_number}`}
                                           className="px-3 py-1.5 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors flex items-center gap-1.5 text-sm font-medium shadow-sm hover:shadow-md"
@@ -400,16 +371,16 @@ export default function PICContactsPage() {
                                     </div>
                                   </div>
                                   {editingMode && (
-                                    <div className="flex gap-2">
+                                    <div className="flex gap-2 w-full sm:w-auto">
                                       <button
                                         onClick={() => startEditContact(contact)}
-                                        className="px-3 py-1.5 text-sm bg-amber-500 text-white rounded-lg hover:bg-amber-600 transition-colors"
+                                        className="flex-1 sm:flex-none px-3 py-1.5 text-sm bg-amber-500 text-white rounded-lg hover:bg-amber-600 transition-colors"
                                       >
                                         Edit
                                       </button>
                                       <button
                                         onClick={() => handleDeleteContact(contact.id)}
-                                        className="px-3 py-1.5 text-sm bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
+                                        className="flex-1 sm:flex-none px-3 py-1.5 text-sm bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
                                       >
                                         Delete
                                       </button>
@@ -434,6 +405,35 @@ export default function PICContactsPage() {
               ))}
           </div>
         )}
+
+        {/* Editing Mode Toggle - Moved to Bottom */}
+        <div className="mt-8 flex items-center gap-3 bg-white rounded-lg shadow-md p-4">
+          <span className="text-sm font-semibold text-slate-700">Editing Mode:</span>
+          <button
+            onClick={() => {
+              setEditingMode(!editingMode);
+              // Cancel any ongoing edits when toggling off
+              if (editingMode) {
+                setEditingContact(null);
+                setAddingToSection(null);
+                setContactForm({ name: '', phoneNumber: '' });
+              }
+            }}
+            className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 ${editingMode ? 'bg-indigo-600' : 'bg-slate-300'
+              }`}
+          >
+            <span
+              className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${editingMode ? 'translate-x-6' : 'translate-x-1'
+                }`}
+            />
+          </button>
+          <span className={`text-sm font-medium ${editingMode ? 'text-indigo-600' : 'text-slate-500'}`}>
+            {editingMode ? 'ON' : 'OFF'}
+          </span>
+          <span className="hidden sm:inline text-xs text-slate-500 ml-2">
+            ({editingMode ? 'Show' : 'Hide'} editing controls)
+          </span>
+        </div>
       </div>
     </div>
   );

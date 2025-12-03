@@ -273,7 +273,7 @@ export default function ViewReportsPage() {
                   className={`bg-white rounded-xl p-4 pb-1 ${timeReports.some(report =>
                     (report.entries?.filter((e) => !e.temperature_in_range).length || 0) > 0
                   )
-                    ? 'border border-slate-200 shadow-[0_0_10px_2px_#fca5a5]'
+                    ? 'border border-slate-200 animate-glow-pulse'
                     : 'shadow-lg'
                     }`}
                 >

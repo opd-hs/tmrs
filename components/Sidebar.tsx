@@ -32,13 +32,12 @@ export default function Sidebar() {
     { href: '/temperature-reporting', label: 'Temperature Reporting', icon: Thermometer },
     { href: '/pic-contacts', label: 'PIC Contact Number', icon: Phone },
     { href: '/view-reports', label: 'View Report', icon: FileText },
-    { href: '/manage-fridges', label: 'Manage Fridge', icon: Refrigerator },
   ];
 
   return (
     <div className="w-64 bg-slate-900 text-white min-h-screen flex flex-col hidden md:flex shadow-2xl ">
       <div className="p-6 border-b border-slate-700/50 bg-gradient-to-br from-slate-900 to-slate-800">
-        <h1 className="text-xl font-bold bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
+        <h1 className="text-4xl tracking-widest text-cyan-400 text-center">
           TMRS
         </h1>
       </div>
@@ -73,7 +72,19 @@ export default function Sidebar() {
         </div>
       </nav>
 
-      <div className="p-4 border-t border-slate-700/50 sticky bottom-0 bg-slate-900">
+
+      <div className="p-4 border-t border-slate-700/50 sticky bottom-0 bg-slate-900 space-y-2">
+        <Link
+          href="/manage-fridges"
+          className={`flex items-center w-full px-4 py-3 rounded-lg transition-all duration-200 ${pathname === '/manage-fridges'
+              ? 'bg-gradient-to-r from-emerald-600 to-emerald-500 text-white shadow-lg shadow-emerald-500/30 transform scale-105'
+              : 'text-slate-300 hover:bg-slate-800 hover:text-white hover:transform hover:scale-[1.02] hover:shadow-md'
+            }`}
+        >
+          <Refrigerator className="w-5 h-5 mr-3" />
+          <span className="font-medium">Manage Fridge</span>
+        </Link>
+
         <button
           onClick={handleLogout}
           className="flex items-center w-full px-4 py-3 rounded-lg text-slate-300 hover:bg-red-600/90 hover:text-white transition-all duration-200 hover:shadow-md hover:transform hover:scale-[1.02]"
